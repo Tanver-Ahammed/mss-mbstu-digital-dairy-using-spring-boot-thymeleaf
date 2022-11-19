@@ -2,6 +2,7 @@ package com.mbstu.dairy.services.impl;
 
 import com.mbstu.dairy.dto.DepartmentDTO;
 import com.mbstu.dairy.entities.Department;
+import com.mbstu.dairy.entities.Faculty;
 import com.mbstu.dairy.exceptions.ResourceNotFoundException;
 import com.mbstu.dairy.repositories.DepartmentRepository;
 import com.mbstu.dairy.services.DepartmentService;
@@ -25,9 +26,11 @@ public class DepartmentServiceImpl implements DepartmentService {
     private ModelMapper modelMapper;
 
     @Override
-    public DepartmentDTO addDepartment(DepartmentDTO departmentDTO) {
-        return this.departmentToDTO(this.departmentRepository
-                .save(this.dtoToDepartment(departmentDTO)));
+    public DepartmentDTO addDepartment(DepartmentDTO departmentDTO, Long facultyId) {
+        Faculty faculty = facultyService.getFacultyById(facultyId);
+        Department department = this.dtoToDepartment(departmentDTO);
+        department.setFaculty(faculty);
+        return this.departmentToDTO(this.departmentRepository.save(department));
     }
 
     @Override
@@ -37,11 +40,17 @@ public class DepartmentServiceImpl implements DepartmentService {
 
     @Override
     public List<DepartmentDTO> getAllDepartment() {
+        return this.departmentRepository.findAll().stream()
+                .map(this::departmentToDTO).collect(Collectors.toList());
+    }
+
+    @Override
+    public List<DepartmentDTO> getAllDepartmentByFaculty(Long facultyId) {
+        Faculty faculty = this.facultyService.getFacultyById(facultyId);
         return this.departmentRepository
-                .findAll()
+                .findDepartmentByFaculty(faculty)
                 .stream()
-                .map(this::departmentToDTO)
-                .collect(Collectors.toList());
+                .map(this::departmentToDTO).collect(Collectors.toList());
     }
 
     @Override

@@ -36,8 +36,8 @@ public class TeacherDTO {
 
     private boolean activityStatus;
 
-    private DepartmentDTO departmentDTO;
+    private String image;
 
-    private List<AttachmentDTO> attachmentDTOS = new ArrayList<>();
+    private DepartmentDTO departmentDTO;
 
 }

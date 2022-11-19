@@ -42,11 +42,10 @@ public class Teacher implements Serializable {
 
     private boolean activityStatus;
 
+    private String image;
+
     @ManyToOne
     @JoinColumn(name = "department_id_fk", referencedColumnName = "id")
     private Department department;
-
-    @OneToMany(orphanRemoval = true, fetch = FetchType.LAZY, cascade = CascadeType.ALL)
-    private List<Attachment> attachments = new ArrayList<>();
 
 }

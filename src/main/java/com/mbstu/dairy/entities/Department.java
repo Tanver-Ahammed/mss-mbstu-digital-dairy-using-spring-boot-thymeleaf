@@ -26,6 +26,7 @@ public class Department implements Serializable {
 
     private short startingYear;
 
+    @Column(length = 50000)
     private String description;
 
     @ManyToOne

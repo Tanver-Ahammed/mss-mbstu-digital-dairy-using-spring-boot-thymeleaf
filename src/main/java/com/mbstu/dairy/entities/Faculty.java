@@ -26,9 +26,10 @@ public class Faculty implements Serializable {
 
     private short startingYear;
 
+    @Column(length = 50000)
     private String description;
 
-    @OneToMany( mappedBy = "faculty", orphanRemoval = true, fetch = FetchType.EAGER, cascade = CascadeType.ALL)
+    @OneToMany(mappedBy = "faculty", orphanRemoval = true, fetch = FetchType.EAGER, cascade = CascadeType.ALL)
     private List<Department> departments = new ArrayList<>();
 
 }

@@ -29,7 +29,7 @@ public class FacultyController {
     public String saveFaculty(@Valid @ModelAttribute("facultyDTO") FacultyDTO facultyDTO,
                               BindingResult result) {
         this.facultyService.addFaculty(facultyDTO);
-        return "redirect:/faculty/add";
+        return "redirect:/faculty/all";
     }
 
     @GetMapping(path = "/all")

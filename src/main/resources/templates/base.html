@@ -43,14 +43,14 @@
                         </li>
                     </ul>
                 </li>
-                <li class="nav-item dropdown" th:if="${name != null}">
+                <li class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle text-light" href="#" id="navbarDropdownInventory" role="button"
                        data-bs-toggle="dropdown" aria-expanded="false">
-                        Blog
+                        All
                     </a>
                     <ul class="dropdown-menu" aria-labelledby="navbarDropdownInventory">
-                        <li><a class="dropdown-item" th:href="@{/department/add}">Add Department</a></li>
                         <li><a class="dropdown-item" th:href="@{/department/all}">All Departments</a></li>
+                        <li><a class="dropdown-item" th:href="@{/teacher/all}">All Teachers</a></li>
                         <li>
                             <hr class="dropdown-divider">
                         </li>
@@ -58,28 +58,17 @@
                     </ul>
                 </li>
             </ul>
-<!--            <ul class="sign_up_btn pull-right dn-smd mt20">-->
-<!--                <div th:if="${name == null}" class="text-light">-->
-<!--                    <a th:href="@{/auth/login}" class="btn flatiron-user" data-toggle="modal" th:text="Login">-->
-<!--                    </a>-->
-<!--                </div>-->
-<!--                <li class="nav-item dropdown" th:if="${name != null}">-->
-<!--                    <a class="nav-link dropdown-toggle text-light" href="#" id="navbarDropdownProfile" role="button"-->
-<!--                       data-bs-toggle="dropdown" aria-expanded="false" th:text="${name}">-->
-<!--                    </a>-->
-<!--                    <ul class="dropdown-menu" aria-labelledby="navbarDropdownProfile">-->
-<!--                        <li class="list-inline-item list_s">-->
-<!--                            <a th:href="@{/alumni/my/profile}" class="btn flatiron-user" data-toggle="modal">-->
-<!--                                <span class="dn-lg fa-solid fa-user-tie" th:text="Profile"></span></a>-->
-<!--                        </li>-->
-<!--                        <li class="list-inline-item list_s">-->
-<!--                            <a th:href="@{/logout}" class="btn flatiron-user" data-toggle="modal">-->
-<!--                                <span th:text="Logout" class="fa-solid fa-right-from-bracket">-->
-<!--                                </span></a>-->
-<!--                        </li>-->
-<!--                    </ul>-->
-<!--                </li>-->
-<!--            </ul>-->
+            <ul class="sign_up_btn pull-right dn-smd mt20">
+                <div class="text-light">
+                    <button onclick="location.href='/login'" class="btn btn-outline-primary" type="submit">
+                        Login
+                    </button>
+                    <button onclick="location.href='/logout'" class="btn btn-outline-warning" type="submit">
+                        Logout
+                    </button>
+                    </a>
+                </div>
+            </ul>
         </div>
     </div>
 </nav>

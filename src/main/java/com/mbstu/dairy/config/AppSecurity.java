@@ -30,7 +30,7 @@ public class AppSecurity extends WebSecurityConfigurerAdapter {
                 httpBasic()
                 .and()
                 .authorizeRequests()
-                .antMatchers("/faculty/add", "/department/add/**", "teacher/add/**").hasRole("ADMIN")
+                .antMatchers("/faculty/add", "/department/add/**", "/teacher/add/**").hasRole("ADMIN")
                 .and()
                 .formLogin();
     }

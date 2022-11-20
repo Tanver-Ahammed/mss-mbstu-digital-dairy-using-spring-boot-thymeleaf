@@ -38,11 +38,17 @@ public class TeacherController {
                               @PathVariable("departmentId") Long departmentId,
                               BindingResult result) throws IOException {
         this.teacherService.addTeacher(teacherDTODTO, teacherImage, departmentId);
-        return "redirect:/teacher/add/" + departmentId;
+        return "redirect:/teacher/all/by/department/" + departmentId;
+    }
+
+    @GetMapping(path = "/all")
+    public String getAllTeachers(Model model) {
+        model.addAttribute("teacherDTOS", this.teacherService.getAllTeacher());
+        return "teacher/all-teachers";
     }
 
     @GetMapping(path = "/all/by/department/{departmentId}")
-    public String getAllTeachers(@PathVariable("departmentId") Long departmentId, Model model) {
+    public String getAllTeachersByDepartment(@PathVariable("departmentId") Long departmentId, Model model) {
         model.addAttribute("teacherDTOS", this.teacherService.getAllTeacherByDepartment(departmentId));
         return "teacher/all-teachers";
     }

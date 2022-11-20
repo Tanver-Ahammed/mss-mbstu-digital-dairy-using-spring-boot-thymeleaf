@@ -35,11 +35,17 @@ public class DepartmentController {
                                  @PathVariable("facultyId") Long facultyId,
                                  BindingResult result) {
         this.departmentService.addDepartment(departmentDTO, facultyId);
-        return "redirect:/department/add/" + facultyId;
+        return "redirect:/department/all/by/faculty/" + facultyId;
+    }
+
+    @GetMapping(path = "/all")
+    public String getAllDepartments(Model model) {
+        model.addAttribute("departmentDTOS", this.departmentService.getAllDepartment());
+        return "department/all-departments";
     }
 
     @GetMapping(path = "/all/by/faculty/{facultyId}")
-    public String getAllDepartments(@PathVariable("facultyId") Long facultyId, Model model) {
+    public String getAllDepartmentsByFaculty(@PathVariable("facultyId") Long facultyId, Model model) {
         model.addAttribute("departmentDTOS", this.departmentService.getAllDepartmentByFaculty(facultyId));
         return "department/all-departments";
     }
